@@ -3,14 +3,18 @@ name: multi-job workflow
 on: workflow_dispatch
 
 jobs:
-  first-job:
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - name: hi
-        run: echo hi
-  second-job:
+      - name: building
+        run: echo Image Built
+  Test:
     runs-on: ubuntu-24.04
     steps:
-      - name: hello
-        run: echo hello
-    
+      - name: testing
+        run: echo tested the application
+  Deploy:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Deploying
+        run: echo deployed
