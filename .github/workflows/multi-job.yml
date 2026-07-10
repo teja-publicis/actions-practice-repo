@@ -1,7 +1,17 @@
 name: multi-job workflow
 
-on: workflow_dispatch
-
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+      - release/*
+  pull_request:
+    types: opened
+    branches:
+      -main
+      
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -9,7 +19,7 @@ jobs:
       - name: building
         run: |
           echo Image Built
-          sleep 3600
+          echo Hello ${{vars.MY_NAME}}
         
   Test:
     needs: Build
@@ -18,7 +28,6 @@ jobs:
       - name: testing
         run: |
           echo tested the application
-          sleep 3600
         
   Deploy:
     needs: Test
