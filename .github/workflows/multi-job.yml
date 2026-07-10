@@ -7,13 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: building
-        run: echo Image Built
+        run: |
+          echo Image Built
+          sleep 3600
+        
   Test:
+    needs: Build
     runs-on: ubuntu-24.04
     steps:
       - name: testing
-        run: echo tested the application
+        run: |
+          echo tested the application
+          sleep 3600
+        
   Deploy:
+    needs: Test
     runs-on: ubuntu-slim
     steps:
       - name: Deploying
