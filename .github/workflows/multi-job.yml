@@ -20,6 +20,7 @@ jobs:
         run: |
           echo Image Built
           echo Hello ${{vars.MY_NAME}}
+          echo Docker Password is ${{secrets.DOCKERHUB_PASSWORD}}
         
   Test:
     needs: Build
