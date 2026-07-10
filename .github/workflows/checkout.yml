@@ -2,8 +2,8 @@ name: code-checkout-example
 
 on:
   workflow_dispatch: 
-  push:
-    branches: [main]
+env:
+  APP_NAME: Dev
 
 jobs:
   code-checkout:
@@ -11,11 +11,7 @@ jobs:
     steps:
       - name: code-checkout
         uses: actions/checkout@v4
-      - name: print-index.html
-        run: cat index.html
-      - name: pwd & list files
-        run: |
-          pwd
-          ls
+      - name: Connecting to env
+        run: echo env is $APP_NAME
           
        
