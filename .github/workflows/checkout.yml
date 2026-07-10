@@ -1,0 +1,21 @@
+name: code-checkout-example
+
+on:
+  workflow_dispatch: 
+  push:
+    branches: [main]
+
+jobs:
+  code-checkout:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: code-checkout
+        uses: actions/checkout@v4
+      - name: print-index.html
+        run: cat index.html
+      - name: pwd & list files
+        run: |
+          pwd
+          ls
+          
+       
