@@ -2,6 +2,20 @@ name: code-checkout-example
 
 on:
   workflow_dispatch: 
+    inputs:
+      environment:
+        description: Choose the environment to deploy
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - stage
+          - prod
+      artifact_tag:
+        description: Choose the git_tag to deploy
+        required: true
+        
 env:
   APP_NAME: Dev
 
@@ -13,5 +27,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Connecting to env
         run: echo env is $APP_NAME
+      - name: deploy the app
+        run: echo Deploying the ${{inputs.artifact_tag}} application to ${{inputs.environment}}
           
        
